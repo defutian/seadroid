@@ -1,29 +1,56 @@
-# Seafile Android Client
+# Seafile Android Client [![Build Status](https://secure.travis-ci.org/haiwen/seadroid.png?branch=master)](http://travis-ci.org/haiwen/seadroid)
 
-## Dependencies
+The application has been published onto the market for easy access:
 
-* [ActionBarSherlock](https://github.com/JakeWharton/ActionBarSherlock)
-* [aFileChooser](https://github.com/iPaulPro/aFileChooser)
-* [NewQuickAction](https://github.com/haiwen/NewQuickAction)
-* [http-request](https://github.com/kevinsawicki/http-request)
+[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=com.seafile.seadroid2)
+[![Get it on F-Droid](https://cloud.githubusercontent.com/assets/12447257/8024903/ce8dca32-0d44-11e5-95b0-e97d1d027351.png)](https://f-droid.org/repository/browse/?fdid=com.seafile.seadroid2)
 
-## Build
+## Contributors
 
-- Download `ActionBarSherlock` 4.2.0 from http://actionbarsherlock.com/download.html
-- Git clone `aFileChooser`, checkout commit `bd54d1411f2f115df38bb49c2a1e43dd26e37f36`
+See [Contributors Graph](https://github.com/haiwen/seadroid/graphs/contributors)
 
-        git clone https://github.com/iPaulPro/aFileChooser
-        git checkout bd54d1411f2f115df38bb49c2a1e43dd26e37f36
+## Build the APK
 
-- Git clone `NewQuickAction`, checkout commit `89f7f1ee572996787096992df5c2991c406d6967`
+* Make sure you have installed the [Android SDK](http://developer.android.com/sdk/index.html) then:
 
-        git clone https://github.com/xgouchet/NewQuickAction
-        git checkout 89f7f1ee572996787096992df5c2991c406d6967
+* cd into seadroid directory
+* Create `key.properties` file or simply rename `key.properties.example` and change configurations to match yours.
 
-- Add ActionBarSherlock/aFileChhooser/NewQuickAction as library according to <http://developer.android.com/guide/developing/projects/projects-eclipse.html#ReferencingLibraryProject>
+* Create keystore file if you don't have one
 
-- Replace the android-support-v4.jar in `aFileChooser` with the jar in seadroid
+ ```
+ keytool -genkey -v -keystore app/debug.keystore -alias AndroidDebugKey -keyalg RSA -keysize 2048 -validity 1 -storepass android -keypass android -dname "cn=TEST, ou=TEST, o=TEST, c=TE"
+ ```
+* Build with `./gradlew assembleRelease`
 
-- Download [http-request-5.3.jar](http://mvnrepository.com/artifact/com.github.kevinsawicki/http-request/5.3) to `seadroid/libs` directory.
+You will get `app/build/outputs/apk/seafile-${versionName}.apk` after the build finishes.
 
-Now you can build seadroid in eclipse.
+## Develop in Android Studio
+
+### Prerequisites
+
+* Android Studio
+* OpenJDK 7 / OracleJDK 7
+
+### Import project
+
+* Open Android Studio
+* Import project
+* Select seadroid directory
+* Choose import from gradle
+* Click next until import is completed
+
+## Develop in IntelliJ/Eclipse
+For those who are using maven build structures, checkout the project from [maven](https://github.com/haiwen/seadroid/tree/maven) branch.
+
+## Internationalization
+
+### Contribute your translation
+
+Please submit translations via Transifex: https://www.transifex.com/haiwen/seadroid/
+
+Steps:
+
+1. Create a free account on Transifex (https://www.transifex.com/).
+2. Send a request to join the language translation.
+3. After accepted by the project maintainer, then you can upload your file or translate online.
